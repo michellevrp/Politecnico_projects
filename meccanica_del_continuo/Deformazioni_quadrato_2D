@@ -1,0 +1,228 @@
+% Codice MATLAB per calcolare la deformazione di un quadrato con rotazione, scorrimento angolare e deformazioni normali. Include approcci di piccole e grandi deformazioni 
+
+clear; clc;
+
+% -----------------------------
+% Input di deformazione definiti (valori piccoli)
+% -----------------------------
+
+%{
+% Angolo di rotazione theta (in radianti)
+theta = 0.05;   % Piccola rotazione (~2.86 gradi)
+
+% Scorrimento angolare gamma
+gamma = 0.02;   % Piccolo scorrimento angolare
+
+% Deformazioni normali (allungamenti/compressioni)
+epsilon_xx = 0.01;    % Piccolo allungamento lungo l'asse x (1%)
+epsilon_yy = -0.005;  % Piccola compressione lungo l'asse y (-0.5%)
+%}
+
+
+% -----------------------------
+% Input di deformazione definiti (valori grandi)
+% -----------------------------
+
+%
+% Angolo di rotazione theta (in radianti)
+theta = pi/4;   % Grande rotazione (45 gradi)
+
+% Scorrimento angolare gamma
+gamma = 2;   % Grande scorrimento angolare
+
+% Deformazioni normali (allungamenti/compressioni)
+epsilon_xx = 0.3;    % Grande allungamento lungo l'asse x (30%)
+epsilon_yy = -0.4;   % Grande compressione lungo l'asse y (-40%)
+%
+
+% -----------------------------
+% Sezione 1: Piccole Deformazioni
+% -----------------------------
+
+% Step 1: Costruzione di epsilon (Tensore delle Piccole Deformazioni)
+% Elementi diagonali per deformazioni normali, 
+% elementi fuori diagonale per scorrimento angolare
+epsilon = [epsilon_xx,    gamma/2;
+           gamma/2,       epsilon_yy];
+
+% Step 2: Costruzione di w (Tensore delle Piccole Rotazioni)
+% Tensore antisimmetrico che rappresenta la piccola rotazione
+w = [  0,        -theta/2;
+       theta/2,    0      ];
+
+% Step 3: Calcolo di H (Tensore del Gradiente di Spostamento)
+H = epsilon + w;
+
+% Step 4: Definizione della configurazione di riferimento (quadrato)
+X = [0, 1, 1, 0;  % coordinate x
+     0, 0, 1, 1]; % coordinate y
+X = [X, X(:,1)];  % chiudo il quadrato nel grafico
+
+% Step 5: Calcolo degli spostamenti utilizzando epsilon e w 
+u_small = zeros(size(X));
+for i = 1:size(X, 2)
+    u_small(:, i) = H * X(:, i);
+end
+
+% Step 6: Calcolo delle nuove posizioni 
+x_small = X + u_small;
+
+% -----------------------------
+% Sezione 2: Grandi Deformazioni
+% -----------------------------
+
+% Step 7: Costruzione di F (Gradiente di Deformazione) 
+
+% Step 7a: Costruzione della Matrice di Rotazione R
+R = [cos(theta), -sin(theta); sin(theta), cos(theta)];
+
+% Step 7b: Costruzione del Tensore di Allungamento Destro U
+% Includo deformazioni normali e scorrimento angolare in U
+
+% U deve essere simmetrico e definito positivo
+epsilon_large = [epsilon_xx,    gamma/2;
+                 gamma/2,       epsilon_yy];
+
+U = eye(2) + epsilon_large;
+
+% Step 7c: Calcolo del Gradiente di Deformazione F
+F = R * U;
+
+% Step 8: Calcolo delle nuove posizioni utilizzando F
+x_large = zeros(size(X));
+for i = 1:size(X, 2)
+    x_large(:, i) = F * X(:, i);
+end
+
+% Step 9: Calcolo degli spostamenti 
+u_large = x_large - X;
+
+% -----------------------------
+% Calcoli aggiuntivi
+% -----------------------------
+
+% Step 10: Calcolo del Tensore di Deformazione di Green-Lagrange E
+I = eye(2);        % Matrice identità
+C = F' * F;        % Tensore di deformazione di Cauchy-Green destro
+E = (C - I) / 2;   % Tensore di Green-Lagrange
+
+% Step 11: Calcolo della Differenza E - epsilon
+difference = E - epsilon;
+
+% Step 12: Calcolo di epsilon_diretta e epsilon_nominale
+dL = norm(X);
+dl_small = norm(x_small);
+dl_large = norm(x_large);
+Lambda_small = dl_small/dL;
+Lambda_large = dl_large/dL;
+epsilon_dir_small = (1/2)*(Lambda_small^2 -1);
+epsilon_dir_large = (1/2)*(Lambda_large^2 -1);
+epsilon_nom_small = Lambda_small - 1;
+epsilon_nom_large = Lambda_large - 1;
+
+% -----------------------------
+% Step 13: Visualizzazione dei Tensori e Dati Calcolati
+% -----------------------------
+
+disp('--------------- Dati per piccole deformazioni ---------------');
+disp('Tensore delle Piccole Rotazioni w:');
+disp(w);
+
+disp('Tensore delle Piccole Deformazioni epsilon:');
+disp(epsilon);
+
+disp('Tensore del Gradiente di Spostamento H:');
+disp(H);
+
+disp('--------------- Dati per grandi deformazioni ---------------');
+
+disp('Matrice delle Rotazioni R:');
+disp(R);
+
+disp('Tensore di Allungamento Destro U:');
+disp(U);
+
+disp('Gradiente di Deformazione F:');
+disp(F);
+
+disp('Tensore di Green-Lagrange E:');
+disp(E);
+
+disp('--------------- Errore e misure di deformazione ---------------');
+
+disp('Differenza tra E ed epsilon (Errore):');
+disp(difference);
+
+disp('Epsilon diretta ed epsilon nominale per piccole deformazioni:');
+disp(epsilon_dir_small);
+disp(epsilon_nom_small);
+
+disp('Epsilon diretta ed epsilon nominale per grandi deformazioni:');
+disp(epsilon_dir_large);
+disp(epsilon_nom_large);
+
+disp('--------------- Coordinate ---------------');
+
+disp('Coordinate iniziali:');
+disp(X);
+
+disp('Coordinate finali con Piccole Deformazioni:');
+disp(x_small);
+
+disp('Coordinate finali con Grandi Deformazioni:');
+disp(x_large);
+
+
+% -----------------------------
+% Step 14: Plot delle Configurazioni Originale e Deformate
+% -----------------------------
+
+figure;
+
+% Plot della Configurazione Originale (Linea Blu)
+plot(X(1, :), X(2, :), 'b-', 'LineWidth', 2); hold on;
+
+% Plot della Configurazione Deformata utilizzando F (Grandi Deformazioni - Linea Verde)
+plot(x_large(1, :), x_large(2, :), 'g-.', 'LineWidth', 1.5);
+
+% Plot della Configurazione Deformata utilizzando epsilon e w (Piccole Deformazioni - Linea Rossa)
+plot(x_small(1, :), x_small(2, :), 'r--', 'LineWidth', 2.5);
+
+% Aggiunta di marcatori alle linee 
+plot(X(1, :), X(2, :), 'bo', 'MarkerSize', 6, 'MarkerFaceColor', 'b');
+plot(x_large(1, :), x_large(2, :), 'gs', 'MarkerSize', 6, 'MarkerFaceColor', 'g');
+plot(x_small(1, :), x_small(2, :), 'r^', 'MarkerSize', 6, 'MarkerFaceColor', 'r');
+
+% Legenda
+legend('Configurazione Originale', 'Deformazione Grande (F)', 'Deformazione Piccola (\epsilon e w)', 'Location', 'bestoutside');
+xlabel('X');
+ylabel('Y');
+title('Deformazione di un Quadrato con Rotazione, Scorrimento Angolare e Allungamenti');
+
+% Check dati visibili
+
+x_min = min([X(1,:), x_large(1,:), x_small(1,:)]) - 0.5;
+x_max = max([X(1,:), x_large(1,:), x_small(1,:)]) + 0.5;
+y_min = min([X(2,:), x_large(2,:), x_small(2,:)]) - 0.2;
+y_max = max([X(2,:), x_large(2,:), x_small(2,:)]) + 0.2;
+
+axis([x_min, x_max, y_min, y_max]);
+axis equal;
+grid on;
+set(gca, 'FontSize', 12);
+
+
+% -----------------------------
+% Step 15: Visualizzazione dei Valori di Input nel Grafico
+% -----------------------------
+
+% Creazione del testo da visualizzare con formattazione
+input_text = {
+    sprintf('Rotazione (rad): \\theta = %.4f', theta);
+    sprintf('Deformazioni Normali: \\epsilon_{xx} = %.4f, \\epsilon_{yy} = %.4f', epsilon_xx, epsilon_yy);
+    sprintf('Scorrimenti Angolari: \\gamma = %.4f', gamma);
+    };
+
+annotation('textbox', [0.7, 0.1, 0.25, 0.2], 'String', input_text, 'FitBoxToText', 'on', 'BackgroundColor', 'white', 'EdgeColor', 'black', 'Interpreter', 'tex', 'FontSize', 10);
+
+hold off;

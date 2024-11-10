@@ -2,6 +2,9 @@
 
 clear; clc;
 
+% INPUT
+% Decommentare la sezione interessata
+
 % -----------------------------
 % Input di deformazione definiti (valori piccoli)
 % -----------------------------
@@ -18,12 +21,11 @@ epsilon_xx = 0.01;    % Piccolo allungamento lungo l'asse x (1%)
 epsilon_yy = -0.005;  % Piccola compressione lungo l'asse y (-0.5%)
 %}
 
-
 % -----------------------------
 % Input di deformazione definiti (valori grandi)
 % -----------------------------
 
-%
+%{
 % Angolo di rotazione theta (in radianti)
 theta = pi/4;   % Grande rotazione (45 gradi)
 
@@ -33,7 +35,56 @@ gamma = 2;   % Grande scorrimento angolare
 % Deformazioni normali (allungamenti/compressioni)
 epsilon_xx = 0.3;    % Grande allungamento lungo l'asse x (30%)
 epsilon_yy = -0.4;   % Grande compressione lungo l'asse y (-40%)
-%
+%}
+
+% -----------------------------
+% Input di deformazione definiti (Atto di moto rigido)
+% -----------------------------
+
+%{
+% Angolo di rotazione theta (in radianti)
+theta = 0.05;   
+
+% Scorrimento angolare gamma
+gamma = 0;   % questo valore deve essere nullo
+
+% Deformazioni normali (allungamenti/compressioni)
+epsilon_xx = 0;   % questo valore deve essere nullo
+epsilon_yy = 0;   % questo valore deve essere nullo
+%}
+
+% -----------------------------
+% Input di deformazione definiti (Pura deformazione assiale)
+% -----------------------------
+
+%{
+% Angolo di rotazione theta (in radianti)
+theta = 0.00;   % questo valore deve essere nullo
+
+% Scorrimento angolare gamma
+gamma = 0;   % questo valore deve essere nullo
+
+% Deformazioni normali (allungamenti/compressioni)
+epsilon_xx = 0.3;    % Allungamento lungo l'asse x 
+epsilon_yy = 0;   % Compressione lungo l'asse y 
+%}
+
+% -----------------------------
+% Input di deformazione definiti (Puro taglio)
+% -----------------------------
+
+%{
+% Angolo di rotazione theta (in radianti)
+theta = 0.00;   % questo valore deve essere nullo
+
+% Scorrimento angolare gamma
+gamma = 0.2;   
+
+% Deformazioni normali (allungamenti/compressioni)
+epsilon_xx = 0;    % questo valore deve essere nullo
+epsilon_yy = 0;   % questo valore deve essere nullo
+%}
+
 
 % -----------------------------
 % Sezione 1: Piccole Deformazioni

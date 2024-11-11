@@ -145,7 +145,7 @@ end
 u_large = x_large - X;
 
 
-%% Calcoli aggiuntivi
+%% Sezione 3: Calcoli aggiuntivi
 
 % Step 10: Calcolo del Tensore di Deformazione di Green-Lagrange E
 I = eye(2);        % Matrice identità
@@ -155,7 +155,7 @@ E = (C - I) / 2;   % Tensore di Green-Lagrange
 % Step 11: Calcolo della Differenza E - epsilon
 difference = E - epsilon;
 
-%% Calcolo delle Deformazioni Nominali e Dirette per le Fibre
+% Step 12: Calcolo delle Deformazioni Nominali e Dirette per le Fibre
 
 % Definizione dei nodi
 % Nodi nella configurazione non deformata (X)
@@ -211,7 +211,7 @@ for i = 1:numFibers
 end
 
 
-%% Step 12: Visualizzazione dei Tensori e Dati Calcolati
+%% Sezione 4: Visualizzazione dei Tensori e Dati Calcolati
 
 disp('--------------- Dati per piccole deformazioni ---------------');
 disp('Tensore delle Piccole Rotazioni w:');
@@ -268,7 +268,7 @@ disp('Coordinate finali con Grandi Deformazioni:');
 disp(x_large);
 
 
-%% Step 13: Plot delle Configurazioni Originale e Deformate
+%% Sezione 5: Plot delle Configurazioni Originale e Deformate
 
 figure;
 
@@ -304,7 +304,7 @@ grid on;
 set(gca, 'FontSize', 12);
 
 
-%% Step 14: Visualizzazione dei Valori di Input nel Grafico
+%% Sezione 6: Visualizzazione dei Valori di Input nel Grafico
 
 
 % Creazione del testo da visualizzare con formattazione
@@ -319,7 +319,7 @@ annotation('textbox', [0.7, 0.1, 0.25, 0.2], 'String', input_text, 'FitBoxToText
 hold off;
 
 
-%% Step 15: Visualizzazione delle Fibre Colorate in Base alla Deformazione
+%% Sezione 7: Visualizzazione delle Fibre Colorate in Base alla Deformazione
 
 % Visualizzazione delle fibre per grandi deformazioni
 figure;

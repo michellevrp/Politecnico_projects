@@ -2,7 +2,7 @@
 Repository contenente i codici dei progetti.
 
 ### Indice
-1. [Meccanica Strutturale](Meccanica_Strutturale)
+1. [Meccanica Strutturale](#meccanica-strutturale)
 
 ---
 

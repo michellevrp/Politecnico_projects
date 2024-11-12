@@ -3,6 +3,7 @@ Repository contenente i codici dei progetti.
 
 ### Indice
 1. [Meccanica Strutturale](#meccanica-strutturale)
+2. [Propulsione Aerospaziale](#propulsione-aerospaziale)
 
 ---
 

@@ -3,9 +3,10 @@ Repository contenente i codici dei progetti creati in ambito della meccanica str
 
 ----
 
-<b>Meccanica del continuo</b> 
+## Meccanica del continuo 
 
 Link al paper: clicca qui
+
 Link al repository: [clicca qui](meccanica_del_continuo)
 
 La prima parte del paper analizza il disastro della missione SpaceX CRS-7, evidenziando le problematiche strutturali che hanno causato il fallimento del

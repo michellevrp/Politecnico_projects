@@ -1,7 +1,9 @@
-# Meccanica Strutturale
-Repository contenente i codici dei progetti creati in ambito della meccanica strutturale.
+### Indice
+1. [Meccanica Strutturale](#meccanica-strutturale)
 
-----
+---
+
+# Meccanica Strutturale
 
 ## Meccanica del continuo 
 

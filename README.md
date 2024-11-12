@@ -1,8 +1,8 @@
 # Politecnico di Milano projects
-Repository dei codici dei progetti.
+Repository contenente i codici dei progetti.
 
 ### Indice
-1. [Meccanica Strutturale](#meccanica-strutturale)
+1. [Meccanica Strutturale](Meccanica_Strutturale)
 
 ---
 

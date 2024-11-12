@@ -5,7 +5,7 @@ Repository contenente i codici dei progetti creati in ambito della meccanica str
 
 ## Meccanica del continuo 
 
-Link al paper: [Dalla teoria delle deformazioni alla visualizzazione interattiva.pdf](https://github.com/user-attachments/files/17719301/Dalla.teoria.delle.deformazioni.alla.visualizzazione.interattiva.pdf)
+Link al paper: [Dalla teoria delle deformazioni alla visualizzazione interattiva.pdf](https://github.com/user-attachments/files/17719351/Dalla.teoria.delle.deformazioni.alla.visualizzazione.interattiva.pdf)
 
 Link al repository dei codici: [clicca qui](meccanica_del_continuo)
 

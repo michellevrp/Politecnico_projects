@@ -36,7 +36,7 @@ Repository contenente i codici dei progetti.
 
 *Link al paper: [Optimization of transfers between non-coplanar orbits using bielliptic bitangent maneuvers and solution of Lambert problem.pdf](https://github.com/user-attachments/files/17733924/Optimization.of.transfers.between.non-coplanar.orbits.using.bielliptic.bitangent.maneuvers.and.solution.of.Lambert.problem.pdf)* \
 *Link alla directory dei codici: [clicca qui](Optimization_orbital_transfers)* \
-*Link alla presentazione: [clicca qui](https://prezi.com/v/view/bISscnekoWqVQaD9n77K/)*
+*Link alle presentazioni: [clicca qui](Optimization_orbital_transfers/Presentazioni.md)*
 
 
 **Abstract**: In the following paper, three possible strategies for an orbital transfer maneuver, between two assigned points located on low Earth orbits have been studied. Orbital transfers are a series of operations commonly carried out in order to vary the orbit in which a satellite is moving around the Earth. In order not only to analyze the individual strategies, but also to compare them, the cost and associated transfer time are calculated for each. In this way it is possible to determine which of those shown is the optimal maneuver, that is the one that represents the best compromise between the time taken and the mass of propellant consumed. In fact, the purposes of the paper are precisely to highlight the feasibility of the maneuvers presented and find the one that maximizes this quality. 

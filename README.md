@@ -35,7 +35,7 @@ Repository contenente i codici dei progetti.
 # Analisi di missioni spaziali
 
 *Link al paper: [Optimization of transfers between non-coplanar orbits using bielliptic bitangent maneuvers and solution of Lambert problem.pdf](https://github.com/user-attachments/files/17733924/Optimization.of.transfers.between.non-coplanar.orbits.using.bielliptic.bitangent.maneuvers.and.solution.of.Lambert.problem.pdf)* \
-*Link alla directory dei codici: [clicca qui](Concorde_RR_Snecma_Olympus_593MK610)* \
+*Link alla directory dei codici: [clicca qui](Optimization_orbital_transfers)* \
 *Link alla presentazione: [clicca qui](https://prezi.com/v/view/bISscnekoWqVQaD9n77K/)*
 
 

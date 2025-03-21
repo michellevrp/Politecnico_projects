@@ -39,5 +39,5 @@ th = 2 * atan(tan(E/2) * sqrt((1+e)/(1-e)));
 
 %% stampo
 
-fprintf('\n\nL anomalia vera è th = %f\n\n', th)
+fprintf('\n\nL anomalia vera Ã¨ th = %f\n\n', th)
 

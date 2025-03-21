@@ -3,7 +3,7 @@ clear all
 % ------------------------------------------------------------------------
 %  Lo script stampa i valori caratteristici per l'orbita iniziale e finale
 %   
-%  I parametri orbitali e posizione/velocit‡ punti iniziale/finale 
+%  I parametri orbitali e posizione/velocit√† punti iniziale/finale 
 %  non vengono stampati ma sono presenti nella workspace a destra 
 % ------------------------------------------------------------------------
 

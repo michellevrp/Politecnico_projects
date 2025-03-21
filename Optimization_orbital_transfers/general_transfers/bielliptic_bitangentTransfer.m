@@ -25,14 +25,14 @@ function [DeltaV1, DeltaV2, DeltaV3, Deltat] = bielliptic_bitangentTransfer(a_i,
 %
 % La manovra ha sempre luogo al pericentro, per effetto Oberth 
 %
-% La manovra Ë a tre impulsi
+% La manovra √® a tre impulsi
 %
 % -----------------------------------------------------------------------
 
 mu = 398600;
 
 a = @(ra,rp) (ra + rp)/2;                                                   %semiasse maggiore
-v = @(r,a) sqrt(mu)*sqrt(2/r - 1/a);                                        %velocit‡
+v = @(r,a) sqrt(mu)*sqrt(2/r - 1/a);                                        %velocit√†
 
 %% calcolo costo manovra
         
@@ -56,7 +56,7 @@ Deltat = Deltat1 + Deltat2;
 
 %% stampo
 
-fprintf('\n\nIl costo delle manovre Ë di: \nDeltaV1 = %f km/s \nDeltaV2 = %f km/s \nDeltaV3 = %f km/s',DeltaV1,DeltaV2,DeltaV3)
-fprintf('\n\nIl costo totale Ë DeltaV_tot = %f km/s',abs(DeltaV1)+abs(DeltaV2)+abs(DeltaV3))
-fprintf('\n\nIl tempo di manovra Ë Deltat = %f s \n',Deltat)
+fprintf('\n\nIl costo delle manovre √® di: \nDeltaV1 = %f km/s \nDeltaV2 = %f km/s \nDeltaV3 = %f km/s',DeltaV1,DeltaV2,DeltaV3)
+fprintf('\n\nIl costo totale √® DeltaV_tot = %f km/s',abs(DeltaV1)+abs(DeltaV2)+abs(DeltaV3))
+fprintf('\n\nIl tempo di manovra √® Deltat = %f s \n',Deltat)
 
